@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cdaatms8regd0"]
+
+[ext_resource type="Script" uid="uid://3ehwdkoyddrb" path="res://projectily.gd" id="1_eh6x7"]
+
+[node name="Projectily" type="Node2D" unique_id=1712725954]
+script = ExtResource("1_eh6x7")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1810841821]
+points = PackedVector2Array(0, -1, 0, 1)
+width = 1.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2009654511]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
