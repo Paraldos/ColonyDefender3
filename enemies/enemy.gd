@@ -1,8 +1,13 @@
 extends Node2D
+class_name Enemy
 
 @onready var hit_effect: HitEffect = %HitEffect
 const EXPLOSION = preload("uid://ci6p5co2jkjrp")
 @export var hp = 5
+@export var movement: EnemyMovement
+
+func _ready() -> void:
+	pass
 
 func _on_hurtbox_hit_received(hitbox: Hitbox) -> void:
 	hit_effect.play()

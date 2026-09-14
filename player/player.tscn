@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dtgyd3adk66d" path="res://assets/img/player.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://dvo120lfiiyys" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="PackedScene" uid="uid://d20lfd3echk2s" path="res://player/player_attack.tscn" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://djqsb2nir754t" path="res://components/hitbox.gd" id="4_yw30f"]
+[ext_resource type="PackedScene" uid="uid://bdxemgbkmp6gu" path="res://player/player_movement.tscn" id="5_qjkh3"]
 
 [sub_resource type="Animation" id="Animation_rkbax"]
 length = 0.001
@@ -21,7 +23,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_g1dw6"]
 resource_name = "loop"
-length = 0.19999999999999998
+length = 0.2
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -43,6 +45,9 @@ _data = {
 &"loop": SubResource("Animation_g1dw6")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kc5u"]
+radius = 5.0990195
+
 [node name="Player" type="CharacterBody2D" unique_id=143283446]
 script = ExtResource("1_rkbax")
 
@@ -60,3 +65,15 @@ width = 1.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Exhaust" unique_id=1261412975]
 libraries/ = SubResource("AnimationLibrary_yw30f")
 autoplay = &"loop"
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=369941822]
+position = Vector2(-0.5, 0)
+script = ExtResource("4_yw30f")
+dmg = 10
+metadata/_custom_type_script = "uid://djqsb2nir754t"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2013038150]
+shape = SubResource("CircleShape2D_0kc5u")
+
+[node name="PlayerMovement" parent="." unique_id=756467842 node_paths=PackedStringArray("actor") instance=ExtResource("5_qjkh3")]
+actor = NodePath("..")
