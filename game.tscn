@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cfju822xcoaxy"]
 
 [ext_resource type="PackedScene" uid="uid://4gm70mkamjin" path="res://player/player.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://b6vkqbc3a1kch" path="res://enemies/enemy.tscn" id="2_e2o6t"]
 
 [sub_resource type="Gradient" id="Gradient_e2o6t"]
 colors = PackedColorArray(1, 1, 1, 0.39215687, 1, 1, 1, 0.5882353)
@@ -36,3 +37,6 @@ color_initial_ramp = SubResource("Gradient_e2o6t")
 
 [node name="Player" parent="." unique_id=374692351 instance=ExtResource("1_80nbo")]
 position = Vector2(36, 104)
+
+[node name="Enemy" parent="." unique_id=1747033170 instance=ExtResource("2_e2o6t")]
+position = Vector2(40, 16)

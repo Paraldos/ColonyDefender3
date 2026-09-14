@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://cdaatms8regd0"]
 
 [ext_resource type="Script" uid="uid://3ehwdkoyddrb" path="res://projectily.gd" id="1_eh6x7"]
+[ext_resource type="Script" uid="uid://djqsb2nir754t" path="res://components/hitbox.gd" id="2_03nao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kc5u"]
+size = Vector2(2, 4)
 
 [node name="Projectily" type="Node2D" unique_id=1712725954]
 script = ExtResource("1_eh6x7")
@@ -10,5 +14,15 @@ points = PackedVector2Array(0, -1, 0, 1)
 width = 1.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2009654511]
+rect = Rect2(-2, -2, 4, 4)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1879818551]
+collision_layer = 0
+script = ExtResource("2_03nao")
+metadata/_custom_type_script = "uid://djqsb2nir754t"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=516826727]
+shape = SubResource("RectangleShape2D_0kc5u")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="impact" from="Hitbox" to="." method="_on_hitbox_impact"]
