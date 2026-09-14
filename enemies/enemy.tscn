@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bjkihq4esjk87" path="res://components/hit_effect.gd" id="2_orwns"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kc5u"]
-radius = 8.0
+radius = 4.1231055
 
 [node name="Enemy" type="Node2D" unique_id=1455109064]
 script = ExtResource("1_orwns")
@@ -20,6 +20,7 @@ script = ExtResource("1_7frlh")
 metadata/_custom_type_script = "uid://cix3yowe5obe8"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=66860044]
+position = Vector2(-0.5, 0)
 shape = SubResource("CircleShape2D_0kc5u")
 
 [node name="HitEffect" type="Node2D" parent="." unique_id=663655179 node_paths=PackedStringArray("actor")]
