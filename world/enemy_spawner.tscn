@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b5l8ewwtvm4c4"]
+
+[ext_resource type="Script" uid="uid://1el8xeb7m26o" path="res://world/enemy_spawner.gd" id="1_ah4w2"]
+[ext_resource type="PackedScene" uid="uid://c6wyc4rcmaohq" path="res://enemies/raider_right.tscn" id="2_blw1m"]
+[ext_resource type="PackedScene" uid="uid://0in244xosups" path="res://enemies/raider_left.tscn" id="3_uhn5a"]
+
+[node name="EnemySpawner" type="Node2D" unique_id=64689616]
+script = ExtResource("1_ah4w2")
+possible_enemies = Array[PackedScene]([ExtResource("2_blw1m"), ExtResource("3_uhn5a")])
+
+[node name="Up" type="Marker2D" parent="." unique_id=1018772040]
+unique_name_in_owner = true
+position = Vector2(36, -8)
+
+[node name="Left" type="Marker2D" parent="." unique_id=1418520234]
+unique_name_in_owner = true
+position = Vector2(88, 48)
+
+[node name="Right" type="Marker2D" parent="." unique_id=2047123646]
+unique_name_in_owner = true
+position = Vector2(-16, 48)
+
+[node name="Timer" type="Timer" parent="." unique_id=733706360]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="EnemyContainer" type="Node2D" parent="." unique_id=55022131]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

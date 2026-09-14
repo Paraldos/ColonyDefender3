@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://0in244xosups"]
+
+[ext_resource type="PackedScene" uid="uid://c6wyc4rcmaohq" path="res://enemies/raider_right.tscn" id="1_2fp1x"]
+
+[node name="RaiderLeft" unique_id=1455109064 instance=ExtResource("1_2fp1x")]
+movement_type = 2
