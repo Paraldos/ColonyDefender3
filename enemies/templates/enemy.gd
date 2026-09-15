@@ -6,7 +6,7 @@ const EXPLOSION = preload("uid://ci6p5co2jkjrp")
 @onready var hit_effect: HitEffect = %HitEffect
 @onready var main_sprite: AnimatedSprite2D = %MainSprite
 
-@export var hp = 5
+@export var hp = 2
 var start_pos := Vector2.ZERO
 var window_size: Vector2
 
