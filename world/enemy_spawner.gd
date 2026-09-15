@@ -3,7 +3,7 @@ extends Node2D
 @export var possible_enemies: Array[PackedScene] = []
 
 @onready var enemy_container: Node2D = %EnemyContainer
-@onready var spawn_points = [%Up, %Left, %Right]
+@onready var spawn_points = [%Up, %Up, %Up, %Left, %Right]
 
 var wave_pending := false
 var grace_time := 2.0

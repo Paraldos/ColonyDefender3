@@ -3,6 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://b6vkqbc3a1kch" path="res://enemies/templates/enemy.tscn" id="1_3w01c"]
 
 [node name="Raider" unique_id=1455109064 instance=ExtResource("1_3w01c")]
-
-[node name="EnemyMovement" parent="." index="3" unique_id=1891291267]
-movement = 1
