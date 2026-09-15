@@ -1,28 +1,22 @@
 extends Node2D
 class_name Enemy
 
-enum Movement {
-	STRAIGHT_DOWN,
-	SINUS_DOWN,
-	SINUS_DOWN_REVERSE,
-}
-
 const EXPLOSION = preload("uid://ci6p5co2jkjrp")
 
 @onready var hit_effect: HitEffect = %HitEffect
+@onready var main_sprite: AnimatedSprite2D = %MainSprite
 
 @export var hp = 5
+var start_pos := Vector2.ZERO
+var window_size: Vector2
 
-@export_group("Spawn")
-@export var wave_size := 3
-@export var wave_time := 10
-@export var spawn_spacing := 20.0
-
-@export_group("Movement")
-@export var speed := 20.0
-@export var movement_type := Movement.STRAIGHT_DOWN
-@export var amplitude: float = 10.0
-@export var frequency: float = 0.5
+func _ready() -> void:
+	window_size = get_viewport_rect().size
+	start_pos = global_position
+	if start_pos.x < 0:
+		rotation_degrees = -90
+	elif start_pos.x > window_size.x:
+		rotation_degrees = 90
 
 func _on_hurtbox_hit_received(hitbox: Hitbox) -> void:
 	hit_effect.play()
@@ -39,11 +33,6 @@ func _death():
 
 func _exit_tree() -> void:
 	Utils.enemy_removed.emit()
-
-func spawns_from():
-	match movement_type:
-		_:
-			return Utils.Direction.UP
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

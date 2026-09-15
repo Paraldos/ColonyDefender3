@@ -6,6 +6,17 @@
 [ext_resource type="Script" uid="uid://bjkihq4esjk87" path="res://components/hit_effect.gd" id="2_orwns"]
 [ext_resource type="Script" uid="uid://rhljwk0p8t1l" path="res://enemies/templates/enemy_movement.gd" id="3_07tka"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0kc5u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a6vjd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kc5u"]
 radius = 4.1231055
 
@@ -15,14 +26,15 @@ script = ExtResource("1_orwns")
 [node name="HitEffect" type="Node2D" parent="." unique_id=663655179 node_paths=PackedStringArray("actor")]
 unique_name_in_owner = true
 script = ExtResource("2_orwns")
-actor = NodePath("../Sprite2D")
+actor = NodePath("")
 shake_distance = 0.5
 shake_duration = 0.03
 blink_duration = 0.03
 metadata/_custom_type_script = "uid://bjkihq4esjk87"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=799936580]
-texture = ExtResource("2_a6vjd")
+[node name="MainSprite" type="AnimatedSprite2D" parent="." unique_id=616716302]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_0kc5u")
 flip_v = true
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=2110676690]
