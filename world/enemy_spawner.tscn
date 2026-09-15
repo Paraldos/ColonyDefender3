@@ -13,11 +13,11 @@ position = Vector2(36, -8)
 
 [node name="Left" type="Marker2D" parent="." unique_id=1418520234]
 unique_name_in_owner = true
-position = Vector2(88, 56)
+position = Vector2(80, 56)
 
 [node name="Right" type="Marker2D" parent="." unique_id=2047123646]
 unique_name_in_owner = true
-position = Vector2(-16, 56)
+position = Vector2(-8, 56)
 
 [node name="Timer" type="Timer" parent="." unique_id=733706360]
 unique_name_in_owner = true

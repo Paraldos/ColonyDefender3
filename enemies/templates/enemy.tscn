@@ -50,7 +50,7 @@ script = ExtResource("3_07tka")
 metadata/_custom_type_script = "uid://rhljwk0p8t1l"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1659142915]
-rect = Rect2(-14, -14, 28, 28)
+rect = Rect2(-4, -4, 8, 8)
 
 [connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
