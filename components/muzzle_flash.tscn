@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://brd6wl1eftmlh"]
+
+[ext_resource type="Texture2D" uid="uid://btu8q6ruigfmr" path="res://assets/img/muzzle_flash.png" id="1_8tog2"]
+
+[node name="MuzzleFlash" type="Sprite2D" unique_id=680308941]
+texture = ExtResource("1_8tog2")

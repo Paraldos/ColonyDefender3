@@ -1,10 +1,7 @@
 extends Node2D
 class_name Enemy
 
-var explosions = [
-	preload("uid://ci6p5co2jkjrp"),
-	preload("uid://btneeke0y6iw3")
-]
+var explosions = [preload("uid://ci6p5co2jkjrp"), preload("uid://btneeke0y6iw3")]
 
 @onready var hit_effect: HitEffect = %HitEffect
 @onready var main_sprite: AnimatedSprite2D = %MainSprite
@@ -22,6 +19,7 @@ func _ready() -> void:
 		rotation_degrees = 90
 
 func _on_hurtbox_hit_received(hitbox: Hitbox) -> void:
+	print(hitbox.dmg)
 	hit_effect.play()
 	AudioManager.play(AudioManager.Sound.HIT, 0.2)
 	hp -= hitbox.dmg

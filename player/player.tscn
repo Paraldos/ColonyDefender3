@@ -2,9 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dtgyd3adk66d" path="res://assets/img/player.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://dvo120lfiiyys" path="res://player/player.gd" id="1_rkbax"]
-[ext_resource type="PackedScene" uid="uid://d20lfd3echk2s" path="res://player/player_attack.tscn" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://djqsb2nir754t" path="res://components/hitbox.gd" id="4_yw30f"]
 [ext_resource type="PackedScene" uid="uid://bdxemgbkmp6gu" path="res://player/player_movement.tscn" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://62pri4tvyauf" path="res://attacks/attack.gd" id="6_g6k8r"]
+[ext_resource type="PackedScene" uid="uid://cdaatms8regd0" path="res://projectily.tscn" id="7_boad6"]
 
 [sub_resource type="Animation" id="Animation_rkbax"]
 length = 0.001
@@ -57,8 +58,12 @@ texture = ExtResource("1_oul6g")
 [node name="PlayerMovement" parent="." unique_id=756467842 node_paths=PackedStringArray("actor") instance=ExtResource("5_qjkh3")]
 actor = NodePath("..")
 
-[node name="PlayerAttack" parent="." unique_id=2129267167 instance=ExtResource("3_g1dw6")]
+[node name="Attack" type="Marker2D" parent="." unique_id=1485121477]
 position = Vector2(-0.5, -6)
+script = ExtResource("6_g6k8r")
+projectile = ExtResource("7_boad6")
+sfx = 2
+metadata/_custom_type_script = "uid://62pri4tvyauf"
 
 [node name="Exhaust" type="Line2D" parent="." unique_id=1204876723]
 position = Vector2(-0.5, -0.5)

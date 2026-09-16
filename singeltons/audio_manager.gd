@@ -1,11 +1,15 @@
 extends Node
 
-enum Sound { HIT, LASER }
+enum Sound {
+	NOTHING,
+	HIT,
+	LASER,
+}
 
 const SFX_BUS := &"SFX"
 const SOUNDS := {
 	Sound.HIT: preload("uid://b01mrdoacyylu"),
-	Sound.LASER: preload("uid://bki3tfpr3u8ei")
+	Sound.LASER: preload("uid://bki3tfpr3u8ei"),
 }
 
 func play(sound: Sound, pitch_variation := 0.0, volume := 0.0) -> void:
