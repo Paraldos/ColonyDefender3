@@ -69,6 +69,7 @@ animations = [{
 
 [node name="explosion" type="AnimatedSprite2D" unique_id=293206336]
 sprite_frames = SubResource("SpriteFrames_0kc5u")
+autoplay = "default"
 frame = 7
 frame_progress = 1.0
 script = ExtResource("2_qjhy4")
