@@ -2,20 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cix3yowe5obe8" path="res://components/hurtbox.gd" id="1_7frlh"]
 [ext_resource type="Script" uid="uid://bmp32tx8mmlwq" path="res://enemies/templates/enemy.gd" id="1_orwns"]
-[ext_resource type="Texture2D" uid="uid://dtgyd3adk66d" path="res://assets/img/player.png" id="2_a6vjd"]
 [ext_resource type="Script" uid="uid://bjkihq4esjk87" path="res://components/hit_effect.gd" id="2_orwns"]
 [ext_resource type="Script" uid="uid://rhljwk0p8t1l" path="res://enemies/templates/enemy_movement.gd" id="3_07tka"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0kc5u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_a6vjd")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Script" uid="uid://62pri4tvyauf" path="res://attacks/attack.gd" id="5_4f5l7"]
+[ext_resource type="PackedScene" uid="uid://cdaatms8regd0" path="res://projectily.tscn" id="6_xcm7t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kc5u"]
 radius = 4.1231055
@@ -34,15 +24,14 @@ metadata/_custom_type_script = "uid://bjkihq4esjk87"
 
 [node name="MainSprite" type="AnimatedSprite2D" parent="." unique_id=616716302]
 unique_name_in_owner = true
-sprite_frames = SubResource("SpriteFrames_0kc5u")
 flip_v = true
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=2110676690]
+collision_mask = 0
 script = ExtResource("1_7frlh")
 metadata/_custom_type_script = "uid://cix3yowe5obe8"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=66860044]
-position = Vector2(-0.5, 0)
 shape = SubResource("CircleShape2D_0kc5u")
 
 [node name="EnemyMovement" type="Node2D" parent="." unique_id=1891291267]
@@ -51,6 +40,16 @@ metadata/_custom_type_script = "uid://rhljwk0p8t1l"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1659142915]
 rect = Rect2(-4, -4, 8, 8)
+
+[node name="AttackContainer" type="Node2D" parent="." unique_id=2042486363]
+unique_name_in_owner = true
+
+[node name="Attack" type="Marker2D" parent="AttackContainer" unique_id=1434766015]
+unique_name_in_owner = true
+script = ExtResource("5_4f5l7")
+projectile = ExtResource("6_xcm7t")
+delay = 1.0
+metadata/_custom_type_script = "uid://62pri4tvyauf"
 
 [connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

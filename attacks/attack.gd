@@ -4,17 +4,20 @@ class_name Attack
 enum AttackPatterns {
 	SINGLE_SHOT,
 	SHOTGUN,
-	STAR, # fires in four directions
+	STAR,
+	OFFSET_STAR,
 }
 
 const MUZZLE_FLASH = preload("uid://brd6wl1eftmlh")
 @export var projectile: PackedScene
 @export var attack_pattern := AttackPatterns.SINGLE_SHOT
+@export var start_delay := 0.0
 @export var delay := 0.3
-@export var spread := 15.0
+@export var spread := 10.0
 @export var muzzle_offset := 12
 @export var sfx := AudioManager.Sound.NOTHING
 @export var dmg := 5
+@export var targets := Utils.Targets.PLAYER
 var attack_timer := Timer.new()
 var muzzle_flash: Sprite2D
 
@@ -23,6 +26,7 @@ func _ready() -> void:
 	muzzle_flash.visible = false
 	add_child(muzzle_flash)
 
+	await get_tree().create_timer(start_delay).timeout
 	add_child(attack_timer)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	attack_timer.start(delay)
@@ -40,6 +44,9 @@ func _on_attack_timer_timeout() -> void:
 		AttackPatterns.STAR:
 			for i in range(4):
 				_shoot(i * 90.0)
+		AttackPatterns.OFFSET_STAR:
+			for i in range(4):
+				_shoot(i * 90.0 + 45)
 
 func _muzzle_flash():
 	muzzle_flash.visible = true
@@ -49,8 +56,11 @@ func _muzzle_flash():
 func _shoot(angle: float) -> void:
 	if projectile == null:
 		return
-	var p := projectile.instantiate() as Node2D
+
+	var shot_rotation := global_rotation + deg_to_rad(angle)
+	var p := projectile.instantiate() as Projectile
 	p.dmg = dmg
-	p.global_position = global_position
-	p.global_rotation = global_rotation + deg_to_rad(angle)
+	p.targets = targets
 	get_tree().current_scene.add_child(p)
+	p.global_position = global_position
+	p.global_rotation = shot_rotation

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdxemgbkmp6gu" path="res://player/player_movement.tscn" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://62pri4tvyauf" path="res://attacks/attack.gd" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://cdaatms8regd0" path="res://projectily.tscn" id="7_boad6"]
+[ext_resource type="Script" uid="uid://cix3yowe5obe8" path="res://components/hurtbox.gd" id="7_rgyib"]
 
 [sub_resource type="Animation" id="Animation_rkbax"]
 length = 0.001
@@ -47,26 +48,32 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kc5u"]
-radius = 5.0990195
+radius = 4.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_50yph"]
+radius = 4.1231055
 
 [node name="Player" type="CharacterBody2D" unique_id=143283446]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_rkbax")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2130994607]
+position = Vector2(0.5, 0)
 texture = ExtResource("1_oul6g")
 
 [node name="PlayerMovement" parent="." unique_id=756467842 node_paths=PackedStringArray("actor") instance=ExtResource("5_qjkh3")]
 actor = NodePath("..")
 
 [node name="Attack" type="Marker2D" parent="." unique_id=1485121477]
-position = Vector2(-0.5, -6)
+position = Vector2(0, -7)
 script = ExtResource("6_g6k8r")
 projectile = ExtResource("7_boad6")
 sfx = 2
+targets = 1
 metadata/_custom_type_script = "uid://62pri4tvyauf"
 
 [node name="Exhaust" type="Line2D" parent="." unique_id=1204876723]
-position = Vector2(-0.5, -0.5)
 points = PackedVector2Array(0, 4, 0, 5)
 width = 1.0
 
@@ -75,10 +82,17 @@ libraries/ = SubResource("AnimationLibrary_yw30f")
 autoplay = &"loop"
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=369941822]
-position = Vector2(-0.5, 0)
+collision_layer = 0
 script = ExtResource("4_yw30f")
 dmg = 10
 metadata/_custom_type_script = "uid://djqsb2nir754t"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2013038150]
 shape = SubResource("CircleShape2D_0kc5u")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=309600191]
+script = ExtResource("7_rgyib")
+metadata/_custom_type_script = "uid://cix3yowe5obe8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=206366702]
+shape = SubResource("CircleShape2D_50yph")

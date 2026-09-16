@@ -1,5 +1,21 @@
 [gd_scene format=3 uid="uid://c6wyc4rcmaohq"]
 
 [ext_resource type="PackedScene" uid="uid://b6vkqbc3a1kch" path="res://enemies/templates/enemy.tscn" id="1_3w01c"]
+[ext_resource type="Texture2D" uid="uid://dtgyd3adk66d" path="res://assets/img/player.png" id="2_7kwil"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13owf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7kwil")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Raider" unique_id=1455109064 instance=ExtResource("1_3w01c")]
+
+[node name="MainSprite" parent="." index="1" unique_id=616716302]
+position = Vector2(0.5, 0)
+sprite_frames = SubResource("SpriteFrames_13owf")

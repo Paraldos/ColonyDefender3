@@ -5,8 +5,10 @@ var explosions = [preload("uid://ci6p5co2jkjrp"), preload("uid://btneeke0y6iw3")
 
 @onready var hit_effect: HitEffect = %HitEffect
 @onready var main_sprite: AnimatedSprite2D = %MainSprite
+@onready var attack: Attack = %Attack
+@onready var attack_container: Node2D = %AttackContainer
 
-@export var hp = 2
+@export var hp = 15
 var start_pos := Vector2.ZERO
 var window_size: Vector2
 
@@ -15,11 +17,14 @@ func _ready() -> void:
 	start_pos = global_position
 	if start_pos.x < 0:
 		rotation_degrees = -90
+		attack_container.rotation_degrees = -90
 	elif start_pos.x > window_size.x:
 		rotation_degrees = 90
+		attack_container.rotation_degrees = 90
+	else:
+		attack_container.rotation_degrees = 180
 
 func _on_hurtbox_hit_received(hitbox: Hitbox) -> void:
-	print(hitbox.dmg)
 	hit_effect.play()
 	AudioManager.play(AudioManager.Sound.HIT, 0.2)
 	hp -= hitbox.dmg
