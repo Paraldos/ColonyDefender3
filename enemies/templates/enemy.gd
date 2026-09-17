@@ -1,8 +1,6 @@
 extends Node2D
 class_name Enemy
 
-var explosions = [preload("uid://ci6p5co2jkjrp"), preload("uid://btneeke0y6iw3")]
-
 @onready var hit_effect: HitEffect = %HitEffect
 @onready var main_sprite: AnimatedSprite2D = %MainSprite
 @onready var attack: Attack = %Attack
@@ -32,9 +30,7 @@ func _on_hurtbox_hit_received(hitbox: Hitbox) -> void:
 		_death()
 
 func _death():
-	var e = explosions.pick_random().instantiate()
-	e.global_position = global_position
-	get_tree().current_scene.add_child(e)
+	Utils.spawn_explosion(global_position)
 	queue_free()
 
 func _exit_tree() -> void:

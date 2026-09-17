@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b67lt1tvvj3dv"]
+
+[ext_resource type="Theme" uid="uid://f3ts5rl4p2an" path="res://assets/theme/main_theme.tres" id="1_rct4q"]
+
+[node name="Points" type="Label" unique_id=1213575750]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme = ExtResource("1_rct4q")
+text = "123"
+horizontal_alignment = 2
+vertical_alignment = 1

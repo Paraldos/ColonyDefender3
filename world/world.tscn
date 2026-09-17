@@ -2,9 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://4gm70mkamjin" path="res://player/player.tscn" id="1_4717r"]
 [ext_resource type="PackedScene" uid="uid://b5l8ewwtvm4c4" path="res://world/enemy_spawner.tscn" id="3_mmdvd"]
+[ext_resource type="PackedScene" uid="uid://csto0mgj2x46u" path="res://ui/health_bar.tscn" id="4_h5o24"]
+[ext_resource type="PackedScene" uid="uid://b67lt1tvvj3dv" path="res://components/points.tscn" id="4_mmdvd"]
 
 [sub_resource type="Gradient" id="Gradient_e2o6t"]
 colors = PackedColorArray(1, 1, 1, 0.39215687, 1, 1, 1, 0.5882353)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4001u"]
+content_margin_top = 1.0
+content_margin_right = 1.0
 
 [node name="Game" type="Node2D" unique_id=1858522138]
 
@@ -39,3 +45,19 @@ color_initial_ramp = SubResource("Gradient_e2o6t")
 position = Vector2(36, 104)
 
 [node name="EnemySpawner" parent="." unique_id=64689616 instance=ExtResource("3_mmdvd")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=999466820]
+
+[node name="HealthBar" parent="CanvasLayer2" unique_id=1808158138 instance=ExtResource("4_h5o24")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -39.0
+offset_bottom = 7.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Points" parent="CanvasLayer2" unique_id=1213575750 instance=ExtResource("4_mmdvd")]
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4001u")

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://62pri4tvyauf" path="res://attacks/attack.gd" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://cdaatms8regd0" path="res://projectily.tscn" id="7_boad6"]
 [ext_resource type="Script" uid="uid://cix3yowe5obe8" path="res://components/hurtbox.gd" id="7_rgyib"]
+[ext_resource type="Script" uid="uid://bjkihq4esjk87" path="res://components/hit_effect.gd" id="8_rgyib"]
 
 [sub_resource type="Animation" id="Animation_rkbax"]
 length = 0.001
@@ -84,15 +85,26 @@ autoplay = &"loop"
 [node name="Hitbox" type="Area2D" parent="." unique_id=369941822]
 collision_layer = 0
 script = ExtResource("4_yw30f")
-dmg = 10
+dmg = 30
 metadata/_custom_type_script = "uid://djqsb2nir754t"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2013038150]
 shape = SubResource("CircleShape2D_0kc5u")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=309600191]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("7_rgyib")
 metadata/_custom_type_script = "uid://cix3yowe5obe8"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=206366702]
 shape = SubResource("CircleShape2D_50yph")
+
+[node name="HitEffect" type="Node2D" parent="." unique_id=1541190180 node_paths=PackedStringArray("actor")]
+unique_name_in_owner = true
+script = ExtResource("8_rgyib")
+actor = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://bjkihq4esjk87"
+
+[connection signal="impact" from="Hitbox" to="." method="_on_hitbox_impact"]
+[connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]
